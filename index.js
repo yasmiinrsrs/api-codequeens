@@ -7,7 +7,7 @@ app.use(express.json());
 let pessoas = [
     { id: 1, nome: 'Malu', idade: '15', altura: '1,62' },
     { id: 2, nome: 'yaya bbzuda', idade: '14', altura: '1,55' },
-    { id: 3, nome: 'aaron bbzudo da yaya', idade: '15', altura: '1,69' },
+    { id: 3, nome: 'aaron bbzudo da yaya' , idade: 15, altura: 169 },
     { id: 4, nome: 'eve bbzuda japonesa', idade: '16', altura: '1,57' },
     { id: 5, nome: 'laulau', idade: '14', altura: '1,53' },
 ]
@@ -50,9 +50,31 @@ app.get("/pessoas/:id", (req, res) => {
     res.json(pessoa);
 });
 
+app.put('/pessoa/:id', (req, res) => {
+      const id = parseInt(req,params.id);
+      const pessoa = pessoas.find(p => p.id === id);
+      if (!pessoa) {
+        return res.status(404).json({mensagem: "pessoas nao encontradas" })
+      }
+
+      const novaPessoas = req.body;
+      console.log("antiga pessoa:", pessoa)
+      console.log("nova pessoa:", novaPessoa)
+
+      pessoa.nome = novaPessoa.nome
+      pessoa.idade = novaPessoa.idade
+      pessoa.altura = novaPessoa.altura
+
+      pessoas[pessoa.id - 1] = {...novaPessoa, id:pessoa.id}
+      console.log("pessoas:  ", pessoas)
+      res.json(pessoas);
+
+}
+)
+
 
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`servido rodando em http://localhost:${PORT}`);
+    console.log(servido rodando em http://localhost:${PORT});
 });
