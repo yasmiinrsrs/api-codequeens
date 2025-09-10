@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/pessoas', (req, res) => {
+app.get('/pessoas.lenght', (req, res) => {
     res.json(pessoas)
 
 });
@@ -72,9 +72,14 @@ app.put('/pessoa/:id', (req, res) => {
 }
 )
 
+app.get('/totalPessoas', (req, res) => {
+    console.log("REQUISIÇÃO:" , req )
+    console.log ("REQUISIÇÃO:", res)
+    res.json{(pessoas.length)}
+});
 
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(servido rodando em http://localhost:${PORT});
+    console.log(`servido rodando em http://localhost:${PORT}`);
 });
